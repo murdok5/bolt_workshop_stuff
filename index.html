@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sample Website</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="blurb">
+          <% if $::kernel == 'windows' { -%>
+            <img src="https://www.sketchappsources.com/resources/source-image/windows-logo-alesiamjau.png" height="128" width="128" />
+          <% } elsif $::kernel == 'Linux' { -%>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Tux.png/220px-Tux.png" height="128" width="128" />
+            <% } elsif $::kernel == 'Darwin' { -%>
+              <img src="https://cdn3.vectorstock.com/i/1000x1000/90/47/the-floppy-disk-in-the-35-inch-is-used-in-older-vector-20489047.jpg" height="128" width="128" />
+            <% } -%>
+            <h1>System Info </h1>
+            <p>fqdn/certname:
+                <%= $::trusted[certname] %>
+            </p>
+            <p>ip address:
+                <%= $::networking[ip] %>
+            </p>
+            <p>total system memory:
+                <%= $::memory[system][total] %>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
